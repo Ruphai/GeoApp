@@ -1,0 +1,68 @@
+/* CSS Reset and Font-selection*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*Top Tab:::Header*/
+header {
+    height: 10 vh;
+    border: 2px solid lightcoral;
+}
+.flex-container {
+    background-color: chocolate;
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    margin: 10px;
+    padding: 5px;
+    align-items: flex-start;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/*Content Container Styling*/
+#map {
+    line-height: 1.6em;
+    height: 80vh;
+    background: lightgreen;
+}
+
+/*Bottom Tab:::Footer*/
+#main-footer {
+    height: 10 vh;
+    text-align: center;
+    background: chocolate;
+    color: cornsilk;
+    padding: 15px;
+}
+
+/*Scale Line Styling */
+.map .ol-scale-line {
+    bottom: 0;
+    left: 0;
+    right: auto;
+    top: auto;
+}
+
+/*Overview Map Styling */
+.map .overview-map {
+    bottom: 0;
+    left: auto;
+    right: 0;
+    top: auto;
+}
+
+/*Zoom Slider Styling */ /*Double Check::Not Functioning yet*/
+.map .zoom-slider {
+    position: relative;
+    bottom: 0;
+    left: auto;
+    right: auto;
+    top: 0;
+}
