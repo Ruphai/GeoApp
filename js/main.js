@@ -1,7 +1,9 @@
 // Call Function via the Onload::: DOM Event6
-window.onload = function() {
-  
+window.onload = init;
+
+function init() {
   let central_position = ol.proj.transform([-100.4458825, 39.7837304 ], 'EPSG:4326', 'EPSG:3857');
+ 
   // MAP LAYERS:: BING LAYERS
   //=========================
   let styles = [
@@ -80,28 +82,28 @@ window.onload = function() {
 
     // LOAD GEOJSON files
     //========================
-    var us_shape = new ol.layer.Vector ({
-      source: new ol.layer.Vector({
-        url: 'data/us_shape.geojson', 
-        format: new ol.format.GeoJSON()
-      })
+
+    // Administrative Boundary of the US
+    let us_shape = new ol.layer.Vector({
+      source: new ol.source.Vector({
+        format: new ol.format.GeoJSON(),
+        //features: (new ol.format.GeoJSON()).readFeatures(url), 
+        url: './data/us_shape.geojson'
+      }), 
+      visible: true, 
+      title: "US Administrative Boundary"
     });
 
-    
-    disasterURL = "data/DisastersByStates_US.geojson"
-    
-    let disaster_geojson = new ol.layer.Vector({
-      url: disasterURL, 
-      format: new ol.format.GeoJSON()
+    // Disaster Layer
+    let disaster_layer = new ol.layer.Vector({
+      source: new ol.source.Vector({
+        format: new ol.format.GeoJSON(),
+        url: "data/DisastersByStates_US.geojson"
+      }), 
+      visible: true, 
+      title: "Disaster Layer"
     });
-    
-    let disasterLayer = new ol.layer.Vector({
-      source: disaster_geojson, 
-      style: function (feature) {
-        style.getText().setText(feature.get('name'));
-        return style;
-      },
-    });
+
     
 
     //--MAP DISPLAY AND VIEW--//
@@ -116,14 +118,15 @@ window.onload = function() {
               title: "Base Maps",
               layers: baseLayers
             }), 
-            new ol.layer.Group(
-              {
-                title: "Overlays", 
-                combine: false, 
-                layers: [
-                  us_shape
-                ]
-              })
+             new ol.layer.Group(
+               {
+                 title: "Overlays", 
+                 combine: false, 
+                 layers: [
+                   us_shape,
+                   disaster_layer
+                 ]
+               })
         ],
        //map.addControl(), 
         view: new ol.View({
@@ -149,4 +152,5 @@ window.onload = function() {
             attribution
           ])
       });
+
 };
