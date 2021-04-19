@@ -50,7 +50,7 @@ function init() {
     //--MAP CONTROLS--//
     //===============================
     //--Scale Line Control-//
-    let scaleLineControl = new ol.control.ScaleLine({bar: true, steps: 5, className: 'ol-scale-line'});
+    let scaleLineControl = new ol.control.ScaleLine({bar: true, steps: 5, className: 'ol-scale-line', units: 'metric'});
 
     //--Full Screen--//
     let fullScreenControl = new ol.control.FullScreen();
@@ -104,6 +104,8 @@ function init() {
       title: "Disaster Layer"
     });
 
+    // CLICK INTERACTION
+
     
 
     //--MAP DISPLAY AND VIEW--//
@@ -120,7 +122,7 @@ function init() {
             }), 
              new ol.layer.Group(
                {
-                 title: "Overlays", 
+                 title: "Vector Layers", 
                  combine: false, 
                  layers: [
                    us_shape,
