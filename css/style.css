@@ -51,11 +51,9 @@ header {
 }
 
 /*Overview Map Styling */
-.map .overview-map {
-    bottom: 0;
-    left: auto;
-    right: 0;
-    top: auto;
+.map .ol-overviewmap {
+    left: 0;
+    bottom: 2em;
 }
 
 /*Zoom Slider Styling */ /*Double Check::Not Functioning yet*/
