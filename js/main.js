@@ -126,7 +126,7 @@ function init() {
     let disaster_layer = new ol.layer.Vector({
       source: new ol.source.Vector({
         format: new ol.format.GeoJSON(),
-        url: "data/DisastersByStates_US.geojson"
+        url: "./data/DisastersByStates_US.geojson"
       }), 
       visible: true, 
       title: "Disaster Layer"
@@ -173,7 +173,7 @@ function init() {
             scaleLineControl,
             fullScreenControl,
             zoomToExtentControl,
-            overViewMap,
+            new ol.control.OverviewMap(),
             // new ol.control.ZoomSlider({
             //     className: 'zoom-slider'
             // }),
