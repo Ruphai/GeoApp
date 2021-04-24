@@ -87,12 +87,40 @@ function init() {
     let us_shape = new ol.layer.Vector({
       source: new ol.source.Vector({
         format: new ol.format.GeoJSON(),
-        //features: (new ol.format.GeoJSON()).readFeatures(url), 
+     //   features: (new ol.format.GeoJSON()).readFeatures(url), 
         url: './data/us_shape.geojson'
       }), 
       visible: true, 
       title: "US Administrative Boundary"
     });
+
+    // Add AJAX request for data
+        var disaster = $.ajax({
+          url: "./data/DisastersByStates_US.geojson",
+          dataType: "json",
+          success: console.log("Disaster data successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+    // // FETCH API
+    // var disaster_url = "./data/DisastersByStates_US.geojson";
+
+    // function fetchJSON(url) {
+    //   return fetch(url)
+    //     .then(function(response) {
+    //       return response.json();
+    //     });
+    // }
+
+    // var data = fetchJSON(disaster_url)
+    //         .then(function(data) {
+    //           data.features.forEach(function(feature) {
+    //            disaster_layer.addFeature(feature)             
+    //         });
+    //       });
+    
+    //CLARIFY HOW To pick each disaster field and display in the Web App.
 
     // Disaster Layer
     let disaster_layer = new ol.layer.Vector({
