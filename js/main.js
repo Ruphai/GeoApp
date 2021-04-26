@@ -71,13 +71,10 @@ function init() {
         collapsible: false
     });
 
-
     //--Layer Switcher Plugin--//
     let layerSwitcher = new ol.control.LayerSwitcher ({
       tipLabel: "Layers"
-     }); 
-
-
+     });
   
 
     // LOAD GEOJSON files
@@ -93,35 +90,54 @@ function init() {
       visible: true, 
       title: "US Administrative Boundary"
     });
-
-    // Add AJAX request for data
-        var disaster = $.ajax({
-          url: "./data/DisastersByStates_US.geojson",
-          dataType: "json",
-          success: console.log("Disaster data successfully loaded."),
-          error: function (xhr) {
-            alert(xhr.statusText)
-          }
-        })
-    // // FETCH API
-    // var disaster_url = "./data/DisastersByStates_US.geojson";
-
-    // function fetchJSON(url) {
-    //   return fetch(url)
-    //     .then(function(response) {
-    //       return response.json();
-    //     });
-    // }
-
-    // var data = fetchJSON(disaster_url)
-    //         .then(function(data) {
-    //           data.features.forEach(function(feature) {
-    //            disaster_layer.addFeature(feature)             
-    //         });
-    //       });
     
-    //CLARIFY HOW To pick each disaster field and display in the Web App.
-    //Apparently using a style function will specify these fields differently and colour coded. 
+    //SET Layer Functions.
+
+    getStyle = function (feature, resolution) {
+      if (feature.get('Total_Disa') < 50) {
+          return new ol.style.Style({
+              fill: new ol.style.Fill({
+                  color: [255, 0, 0, 0.5] // semi-transparent red
+              })
+          });
+      }
+      else  if (feature.get('Total_Disa') < 100) {
+        return new ol.style.Style({
+            fill: new ol.style.Fill({
+                color: [255, 165, 0, 0.5] // semi-transparent yellow
+            })
+        });
+    }
+
+    else  if (feature.get('Total_Disa') < 150) {
+      return new ol.style.Style({
+          fill: new ol.style.Fill({
+              color: [165, 105, 0, 0.5] // semi-transparent yellow
+          })
+      });
+  }
+
+  else  if (feature.get('Total_Disa') < 200) {
+    return new ol.style.Style({
+        fill: new ol.style.Fill({
+            color: [50, 105, 0, 0.5] // semi-transparent yellow
+        })
+    });
+}
+
+      // else if ...
+      else {
+          return new ol.style.Style({
+              fill: new ol.style.Fill({
+                  color: [255, 255, 0, 0.5] // semi-transparent yellow
+              })
+          });
+      }
+  };
+  
+ 
+
+
 
     var style = new ol.style.Style({
       stroke: new ol.style.Stroke({color: '#425364', width: 1}),
@@ -138,6 +154,9 @@ function init() {
         format: new ol.format.GeoJSON(),
         url: "./data/DisastersByStates_US.geojson"
       }), 
+      style: function(feature, resolution) {
+        return getStyle(feature, resolution);
+      },
       visible: true, 
       title: "Disaster Layer"
     });
