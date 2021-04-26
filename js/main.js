@@ -85,7 +85,7 @@ function init() {
       source: new ol.source.Vector({
         format: new ol.format.GeoJSON(),
      //   features: (new ol.format.GeoJSON()).readFeatures(url), 
-        url: './data/us_shape.geojson'
+        url: 'https://raw.githubusercontent.com/Ruphai/GeoApp/main/data/us_shape.geojson'
       }), 
       visible: true, 
       title: "US Administrative Boundary"
@@ -93,18 +93,19 @@ function init() {
     
     //SET Layer Functions.
 
-    getStyle = function (feature, resolution) {
+    //https://www.canva.com/colors/color-wheel/
+    totalDisaterStyle = function (feature, resolution) {
       if (feature.get('Total_Disa') < 50) {
           return new ol.style.Style({
               fill: new ol.style.Fill({
-                  color: [255, 0, 0, 0.5] // semi-transparent red
+                  color: '#13A1EC' // Blue
               })
           });
       }
       else  if (feature.get('Total_Disa') < 100) {
         return new ol.style.Style({
             fill: new ol.style.Fill({
-                color: [255, 165, 0, 0.5] // semi-transparent yellow
+                color: '#CA13EC' // purple
             })
         });
     }
@@ -112,7 +113,7 @@ function init() {
     else  if (feature.get('Total_Disa') < 150) {
       return new ol.style.Style({
           fill: new ol.style.Fill({
-              color: [165, 105, 0, 0.5] // semi-transparent yellow
+              color: '#EC5E13' // red
           })
       });
   }
@@ -120,7 +121,7 @@ function init() {
   else  if (feature.get('Total_Disa') < 200) {
     return new ol.style.Style({
         fill: new ol.style.Fill({
-            color: [50, 105, 0, 0.5] // semi-transparent yellow
+            color: '#35EC13' // green
         })
     });
 }
@@ -129,33 +130,25 @@ function init() {
       else {
           return new ol.style.Style({
               fill: new ol.style.Fill({
-                  color: [255, 255, 0, 0.5] // semi-transparent yellow
+                  color: '#F70810' //DEEP RED
               })
           });
       }
   };
   
- 
-
-
-
-    var style = new ol.style.Style({
-      stroke: new ol.style.Stroke({color: '#425364', width: 1}),
-      fill: new ol.style.Fill(),
-      })
 
       //revise this example: https://openlayers.org/en/master/examples/vector-layer.html
       //https://www.howtobuildsoftware.com/index.php/how-do/lpd/gis-geojson-openlayers-3-openlayers-35-and-geojson
       //https://opensourceconnections.com/blog/2015/07/08/visualizing-your-data-with-openlayers/
 
     // Disaster Layer
-    let disaster_layer = new ol.layer.Vector({
+    let total_disaster_layer = new ol.layer.Vector({
       source: new ol.source.Vector({
         format: new ol.format.GeoJSON(),
-        url: "./data/DisastersByStates_US.geojson"
+        url: 'https://raw.githubusercontent.com/Ruphai/GeoApp/main/data/DisastersByStates_US.geojson'
       }), 
       style: function(feature, resolution) {
-        return getStyle(feature, resolution);
+        return totalDisaterStyle(feature, resolution);
       },
       visible: true, 
       title: "Disaster Layer"
@@ -183,7 +176,7 @@ function init() {
                  combine: false, 
                  layers: [
                    us_shape,
-                   disaster_layer
+                   total_disaster_layer
                  ]
                })
         ],
