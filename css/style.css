@@ -64,3 +64,9 @@ header {
     right: auto;
     top: 0;
 }
+
+.map .ol-legend.ol-unselectable.ol-control.ol-uncollapsible {
+    left: 0;
+    bottom: 200px;
+
+}
