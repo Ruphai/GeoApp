@@ -102,6 +102,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fef0d9' // yellow
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -109,6 +113,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fdcc8a' // light orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -117,6 +125,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fc8d59' // orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -125,6 +137,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#e34a33' // red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -134,6 +150,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#b30000' //dark red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -163,6 +183,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fef0d9' // yellow
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -170,6 +194,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fdcc8a' // light orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -177,6 +205,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fc8d59' // orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -184,6 +216,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#e34a33' // red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -191,6 +227,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#b30000' //dark red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -215,6 +255,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fef0d9' // yellow
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -222,6 +266,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fdcc8a' // light orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -229,6 +277,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fc8d59' // orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -236,6 +288,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#e34a33' // red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -243,6 +299,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#b30000' //dark red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -269,6 +329,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fef0d9' // yellow
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -276,6 +340,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fdcc8a' // light orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -283,6 +351,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fc8d59' // orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -290,6 +362,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#e34a33' // red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -297,6 +373,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#b30000' //dark red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -321,6 +401,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fef0d9' // yellow
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -328,6 +412,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fdcc8a' // light orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -335,6 +423,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fc8d59' // orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -342,6 +434,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#e34a33' // red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -349,6 +445,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#b30000' //dark red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -374,6 +474,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fef0d9' // yellow
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -381,6 +485,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fdcc8a' // light orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -388,6 +496,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fc8d59' // orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -395,6 +507,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#e34a33' // red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -402,6 +518,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#b30000' //dark red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -426,6 +546,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fef0d9' // yellow
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -433,6 +557,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fdcc8a' // light orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -440,6 +568,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fc8d59' // orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -447,6 +579,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#e34a33' // red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -454,6 +590,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#b30000' //dark red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -478,6 +618,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fef0d9' // yellow
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -485,6 +629,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fdcc8a' // light orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -492,6 +640,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fc8d59' // orange
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -499,6 +651,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#e34a33' // red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
@@ -506,6 +662,10 @@ function init() {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#b30000' //dark red
+        }),
+        stroke: new ol.style.Stroke({
+          width: 1,
+          color: [255, 255, 255],
         })
       });
     }
