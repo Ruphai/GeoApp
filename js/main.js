@@ -579,5 +579,40 @@ let tornado_layer = new ol.layer.Vector({
             attribution
           ])
       });
+      
+	  // Select  interaction
+  		var select = new ol.interaction.Select({
+   		hitTolerance: 5,
+    	multi: true,
+    	condition: ol.events.condition.singleClick
+  		});
+  		map.addInteraction(select);
+  		
+  		  // Select control
+  var popup = new ol.Overlay.PopupFeature({
+    popupClass: 'default anim',
+    select: select,
+    canFix: true,
+    template: {
+        title: 
+          // 'nom',   // only display the name
+          function(f) {
+            return f.get('State_Name')+' ('+f.get('State_Code')+')';
+          },
+        attributes: // 
+        {
+          'Total_Disa': { title: 'Total Disasters' },
+          'Tornado': { title: 'Tornado' },
+          'Hurricane': { title: 'Hurricane' },
+          'Fire': { title: 'Fire' },
+          'Severe Sto': { title: 'Severe Storm' },
+          'Flood': { title: 'Severe Flood' },
+          'Snow': { title: 'Severe Snow' },
+          'Bological': { title: 'Biological Hazards' },
+          
+        }
+    }
+  });
+  map.addOverlay (popup);
 
 };
