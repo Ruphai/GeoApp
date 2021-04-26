@@ -121,6 +121,16 @@ function init() {
     //       });
     
     //CLARIFY HOW To pick each disaster field and display in the Web App.
+    //Apparently using a style function will specify these fields differently and colour coded. 
+
+    var style = new ol.style.Style({
+      stroke: new ol.style.Stroke({color: '#425364', width: 1}),
+      fill: new ol.style.Fill(),
+      })
+
+      //revise this example: https://openlayers.org/en/master/examples/vector-layer.html
+      //https://www.howtobuildsoftware.com/index.php/how-do/lpd/gis-geojson-openlayers-3-openlayers-35-and-geojson
+      //https://opensourceconnections.com/blog/2015/07/08/visualizing-your-data-with-openlayers/
 
     // Disaster Layer
     let disaster_layer = new ol.layer.Vector({
