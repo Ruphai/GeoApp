@@ -545,14 +545,14 @@ function init() {
           combine: false,
           layers: [
             us_shape,
-            total_disaster_layer,
             flood_layer,
             biological_layer,
             snow_layer,
             storm_layer,
             fire_layer,
             hurricane_layer,
-            tornado_layer
+            tornado_layer,
+            total_disaster_layer
           ]
         })
     ],
