@@ -212,7 +212,7 @@ function init() {
         })
       });
     }
-    else if (feature.get('Flood') < 30) {
+    else if (feature.get('Flood') < 32) {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#e34a33' // red
@@ -397,7 +397,7 @@ function init() {
   //SEVERE STORM LAYER
   //https://www.canva.com/colors/color-wheel
   stormStyle = function (feature, resolution) {
-    if (feature.get('Severe Sto') < 9) {
+    if (feature.get('Storm') < 9) {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fef0d9' // yellow
@@ -408,7 +408,7 @@ function init() {
         })
       });
     }
-    else if (feature.get('Severe Sto') < 18) {
+    else if (feature.get('Storm') < 18) {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fdcc8a' // light orange
@@ -419,7 +419,7 @@ function init() {
         })
       });
     }
-    else if (feature.get('Severe Sto') < 27) {
+    else if (feature.get('Storm') < 27) {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#fc8d59' // orange
@@ -430,7 +430,7 @@ function init() {
         })
       });
     }
-    else if (feature.get('Severe Sto') < 35) {
+    else if (feature.get('Storm') < 36) {
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color: '#e34a33' // red
@@ -766,7 +766,7 @@ function init() {
         'Tornado': { title: 'Tornado' },
         'Hurricane': { title: 'Hurricane' },
         'Fire': { title: 'Fire' },
-        'Severe Sto': { title: 'Severe Storm' },
+        'Storm': { title: 'Severe Storm' },
         'Flood': { title: 'Severe Flood' },
         'Snow': { title: 'Severe Snow' },
         'Bological': { title: 'Biological Hazards' },
@@ -792,8 +792,7 @@ function init() {
             width: 1,
             color: [255, 255, 255],
           })
-        }),
-        geometry: new ol.geom.Point(ol.extent.getCenter(feature.getGeometry().getExtent()))
+        })
       });
     }
     else if (feature.get('Total_Disa') < 100) {
@@ -807,8 +806,7 @@ function init() {
             width: 1,
             color: [255, 255, 255],
           })
-        }),
-        geometry: new ol.geom.Point(ol.extent.getCenter(feature.getGeometry().getExtent()))
+        })
       });
     }
 
@@ -823,8 +821,7 @@ function init() {
             width: 1,
             color: [255, 255, 255],
           })
-        }),
-        geometry: new ol.geom.Point(ol.extent.getCenter(feature.getGeometry().getExtent()))
+        })
       });
     }
 
@@ -839,8 +836,7 @@ function init() {
             width: 1,
             color: [255, 255, 255],
           })
-        }),
-        geometry: new ol.geom.Point(ol.extent.getCenter(feature.getGeometry().getExtent()))
+        })
       });
     }
 
@@ -856,13 +852,12 @@ function init() {
             width: 1,
             color: [255, 255, 255],
           })
-        }),
-        geometry: new ol.geom.Point(ol.extent.getCenter(feature.getGeometry().getExtent()))
+        })
       });
     }
   };
 
-  // Define a new legend
+  // Define a new legend for total disaster
   var totalDisasterLegend = new ol.legend.Legend({
     title: 'Total Disasters',
     style: totalDisaterLegendStyle,
@@ -870,17 +865,822 @@ function init() {
     size: [50, 12]
   });
 
-
-  map.addControl(new ol.control.Legend({
-    collapsible: false,
-    legend: totalDisasterLegend
-  }));
-
   totalDisasterLegend.addItem({ title: '<  50   ', properties: { Total_Disa: 49 }, typeGeom: 'Point' });
   totalDisasterLegend.addItem({ title: '< 100   ', properties: { Total_Disa: 99 }, typeGeom: 'Point' });
   totalDisasterLegend.addItem({ title: '< 150   ', properties: { Total_Disa: 149 }, typeGeom: 'Point' });
   totalDisasterLegend.addItem({ title: '< 200   ', properties: { Total_Disa: 199 }, typeGeom: 'Point' });
   totalDisasterLegend.addItem({ title: '> 200   ', properties: { Total_Disa: 201 }, typeGeom: 'Point' });
 
+  totalDistLegendCtrl = new ol.control.Legend({
+    collapsible: false,
+    legend: totalDisasterLegend
+  })
 
-};
+  //============================================================
+
+  //style function for flood
+  function floodLegendStyle(feature) {
+    if (feature.get('Flood') < 8) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fef0d9' // yellow                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+    else if (feature.get('Flood') < 16) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fdcc8a' // light orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Flood') < 24) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fc8d59' // orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Flood') < 30) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#e34a33' // red                
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    // else if ...
+    else {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#b30000' //dark red                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+  };
+
+  // Define a new legend for Flood
+  var floodLegend = new ol.legend.Legend({
+    title: 'Flood',
+    style: floodLegendStyle,
+    margin: 5,
+    size: [50, 12]
+  });
+
+  floodLegend.addItem({ title: '<  8    ', properties: { Flood: 7 }, typeGeom: 'Point' });
+  floodLegend.addItem({ title: '< 16    ', properties: { Flood: 15 }, typeGeom: 'Point' });
+  floodLegend.addItem({ title: '< 24    ', properties: { Flood: 23 }, typeGeom: 'Point' });
+  floodLegend.addItem({ title: '< 32    ', properties: { Flood: 31 }, typeGeom: 'Point' });
+  floodLegend.addItem({ title: '> 32    ', properties: { Flood: 33 }, typeGeom: 'Point' });
+
+  floodLegendCtrl = new ol.control.Legend({
+    collapsible: false,
+    legend: floodLegend
+  })
+
+  //============================================================
+
+  //style function for Biological
+  function bioLegendStyle(feature) {
+    if (feature.get('Biological') < 3) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fef0d9' // yellow                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+    else if (feature.get('Biological') < 6) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fdcc8a' // light orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Biological') < 9) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fc8d59' // orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Biological') < 12) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#e34a33' // red                
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    // else if ...
+    else {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#b30000' //dark red                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+  };
+
+  // Define a new legend for Biological
+  var bioLegend = new ol.legend.Legend({
+    title: 'Biological',
+    style: bioLegendStyle,
+    margin: 5,
+    size: [50, 12]
+  });
+
+  bioLegend.addItem({ title: '<  3    ', properties: { Biological: 2 }, typeGeom: 'Point' });
+  bioLegend.addItem({ title: '<  6    ', properties: { Biological: 5 }, typeGeom: 'Point' });
+  bioLegend.addItem({ title: '<  9    ', properties: { Biological: 8 }, typeGeom: 'Point' });
+  bioLegend.addItem({ title: '< 12    ', properties: { Biological: 11 }, typeGeom: 'Point' });
+  bioLegend.addItem({ title: '> 12    ', properties: { Biological: 13 }, typeGeom: 'Point' });
+
+  bioLegendCtrl = new ol.control.Legend({
+    collapsible: false,
+    legend: bioLegend
+  })
+
+  //============================================================
+
+  //style function for Snow
+  function snowLegendStyle(feature) {
+    if (feature.get('Snow') < 3) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fef0d9' // yellow                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+    else if (feature.get('Snow') < 6) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fdcc8a' // light orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Snow') < 9) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fc8d59' // orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Snow') < 12) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#e34a33' // red                
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    // else if ...
+    else {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#b30000' //dark red                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+  };
+
+  // Define a new legend for Snow
+  var snowLegend = new ol.legend.Legend({
+    title: 'Snow',
+    style: snowLegendStyle,
+    margin: 5,
+    size: [50, 12]
+  });
+
+  snowLegend.addItem({ title: '<  3    ', properties: { Snow: 2 }, typeGeom: 'Point' });
+  snowLegend.addItem({ title: '<  6    ', properties: { Snow: 5 }, typeGeom: 'Point' });
+  snowLegend.addItem({ title: '<  9    ', properties: { Snow: 8 }, typeGeom: 'Point' });
+  snowLegend.addItem({ title: '< 12    ', properties: { Snow: 11 }, typeGeom: 'Point' });
+  snowLegend.addItem({ title: '> 12    ', properties: { Snow: 13 }, typeGeom: 'Point' });
+
+  snowLegendCtrl = new ol.control.Legend({
+    collapsible: false,
+    legend: snowLegend
+  })
+
+  //============================================================
+
+  //style function for Severe Storm
+  function stormLegendStyle(feature) {
+    if (feature.get('Storm') < 9) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fef0d9' // yellow                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+    else if (feature.get('Storm') < 18) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fdcc8a' // light orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Storm') < 27) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fc8d59' // orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Storm') < 36) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#e34a33' // red                
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    // else if ...
+    else {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#b30000' //dark red                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+  };
+
+  // Define a new legend for Severe Storm
+  var stormLegend = new ol.legend.Legend({
+    title: 'Severe Storm',
+    style: stormLegendStyle,
+    margin: 5,
+    size: [50, 12]
+  });
+
+  stormLegend.addItem({ title: '<  9    ', properties: { Storm: 8 }, typeGeom: 'Point' });
+  stormLegend.addItem({ title: '< 18    ', properties: { Storm: 17}, typeGeom: 'Point' });
+  stormLegend.addItem({ title: '< 27    ', properties: { Storm: 26}, typeGeom: 'Point' });
+  stormLegend.addItem({ title: '< 36    ', properties: { Storm: 35}, typeGeom: 'Point' });
+  stormLegend.addItem({ title: '> 36    ', properties: { Storm: 37 }, typeGeom: 'Point' });
+
+  stormLegendCtrl = new ol.control.Legend({
+    collapsible: false,
+    legend: stormLegend
+  })
+
+  //============================================================
+
+  //style function for Fire
+  function fireLegendStyle(feature) {
+    if (feature.get('Fire') < 55) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fef0d9' // yellow                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+    else if (feature.get('Fire') < 110) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fdcc8a' // light orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Fire') < 165) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fc8d59' // orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Fire') < 220) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#e34a33' // red                
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    // else if ...
+    else {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#b30000' //dark red                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+  };
+
+  // Define a new legend for Fire
+  var fireLegend = new ol.legend.Legend({
+    title: 'Fire',
+    style: fireLegendStyle,
+    margin: 5,
+    size: [50, 12]
+  });
+
+  fireLegend.addItem({ title: '< 55    ', properties: { Fire: 54}, typeGeom: 'Point' });
+  fireLegend.addItem({ title: '< 110   ', properties: { Fire: 109}, typeGeom: 'Point' });
+  fireLegend.addItem({ title: '< 165   ', properties: { Fire: 164}, typeGeom: 'Point' });
+  fireLegend.addItem({ title: '< 220   ', properties: { Fire: 219}, typeGeom: 'Point' });
+  fireLegend.addItem({ title: '> 220   ', properties: { Fire: 221}, typeGeom: 'Point' });
+
+  fireLegendCtrl = new ol.control.Legend({
+    collapsible: false,
+    legend: fireLegend
+  })
+
+  //============================================================
+
+  //style function for Hurricane
+  function hurrLegendStyle(feature) {
+    if (feature.get('Hurricane') < 10) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fef0d9' // yellow                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+    else if (feature.get('Hurricane') < 20) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fdcc8a' // light orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Hurricane') < 30) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fc8d59' // orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Hurricane') < 40) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#e34a33' // red                
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    // else if ...
+    else {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#b30000' //dark red                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+  };
+
+  // Define a new legend for Hurricane
+  var hurrLegend = new ol.legend.Legend({
+    title: 'Hurricane',
+    style: hurrLegendStyle,
+    margin: 5,
+    size: [50, 12]
+  });
+
+  hurrLegend.addItem({ title: '< 10    ', properties: { Hurricane: 9 }, typeGeom: 'Point' });
+  hurrLegend.addItem({ title: '< 20    ', properties: { Hurricane: 19}, typeGeom: 'Point' });
+  hurrLegend.addItem({ title: '< 30    ', properties: { Hurricane: 29}, typeGeom: 'Point' });
+  hurrLegend.addItem({ title: '< 40    ', properties: { Hurricane: 39}, typeGeom: 'Point' });
+  hurrLegend.addItem({ title: '> 40    ', properties: { Hurricane: 41 }, typeGeom: 'Point' });
+
+  hurrLegendCtrl = new ol.control.Legend({
+    collapsible: false,
+    legend: hurrLegend
+  })
+
+  //============================================================
+
+  //style function for Tornado
+  function torLegendStyle(feature) {
+    if (feature.get('Tornado') < 4) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fef0d9' // yellow                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+    else if (feature.get('Tornado') < 8) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fdcc8a' // light orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Tornado') < 12) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#fc8d59' // orange               
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    else if (feature.get('Tornado') < 16) {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#e34a33' // red                
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+
+    // else if ...
+    else {
+      return new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 5,
+          fill: new ol.style.Fill({
+            color: '#b30000' //dark red                 
+          }),
+          stroke: new ol.style.Stroke({
+            width: 1,
+            color: [255, 255, 255],
+          })
+        })
+      });
+    }
+  };
+
+  // Define a new legend for Tornado
+  var torLegend = new ol.legend.Legend({
+    title: 'Tornado',
+    style: torLegendStyle,
+    margin: 5,
+    size: [50, 12]
+  });
+
+  torLegend.addItem({ title: '<  4    ', properties: { Tornado: 3 }, typeGeom: 'Point' });
+  torLegend.addItem({ title: '<  8    ', properties: { Tornado: 7 }, typeGeom: 'Point' });
+  torLegend.addItem({ title: '< 12    ', properties: { Tornado: 11 }, typeGeom: 'Point' });
+  torLegend.addItem({ title: '< 16    ', properties: { Tornado: 15 }, typeGeom: 'Point' });
+  torLegend.addItem({ title: '> 16    ', properties: { Tornado: 17 }, typeGeom: 'Point' });
+
+  torLegendCtrl = new ol.control.Legend({
+    collapsible: false,
+    legend: torLegend
+  })
+
+
+  
+  //add the legends according to the status of layer visibility
+
+  map.addControl(totalDistLegendCtrl);
+
+  //map.addEventListener('rendercomplete', onChange); //abandoned because of high CPU occupation
+
+  //total_disaster_layer: add event listener for change of visibility
+  total_disaster_layer.addEventListener('change:visible', tdChange)
+
+  //================================================================================
+  //when total_disaster_layer.visible change check if its legend should be displayed 
+  function tdChange() {
+    if (total_disaster_layer.getVisible() == true) {
+      //totalDisasterLegend.style.display = "block";
+      map.addControl(totalDistLegendCtrl);
+    } else {
+      //totalDisasterLegend.style.display = "none";
+      map.removeControl(totalDistLegendCtrl);
+    }
+  };
+
+  //================================================================================
+  //flood_layer: add event listener for change of visibility
+  flood_layer.addEventListener('change:visible', floodChange)
+
+  //when flood_layer.visible change check if its legend should be displayed 
+  function floodChange() {
+    if (flood_layer.getVisible() == true) {
+      map.addControl(floodLegendCtrl);
+    } else {
+      map.removeControl(floodLegendCtrl);
+    }
+  };
+  
+  //================================================================================
+  //biological_layer: add event listener for change of visibility
+  biological_layer.addEventListener('change:visible', bioChange)
+
+  //when biological_layer.visible change check if its legend should be displayed 
+  function bioChange() {
+    if (biological_layer.getVisible() == true) {
+      map.addControl(bioLegendCtrl);
+    } else {
+      map.removeControl(bioLegendCtrl);
+    }
+  };
+
+  //================================================================================
+  //snow_layer: add event listener for change of visibility
+  snow_layer.addEventListener('change:visible', snowChange)
+
+  //when snow_layer.visible change check if its legend should be displayed 
+  function snowChange() {
+    if (snow_layer.getVisible() == true) {
+      map.addControl(snowLegendCtrl);
+    } else {
+      map.removeControl(snowLegendCtrl);
+    }
+  };
+
+  //================================================================================
+  //storm_layer: add event listener for change of visibility
+  storm_layer.addEventListener('change:visible', stormChange)
+
+  //when storm_layer.visible change check if its legend should be displayed 
+  function stormChange() {
+    if (storm_layer.getVisible() == true) {
+      map.addControl(stormLegendCtrl);
+    } else {
+      map.removeControl(stormLegendCtrl);
+    }
+  };
+
+  //================================================================================
+  //fire_layer: add event listener for change of visibility
+  fire_layer.addEventListener('change:visible', fireChange)
+
+  //when fire_layer.visible change check if its legend should be displayed 
+  function fireChange() {
+    if (fire_layer.getVisible() == true) {
+      map.addControl(fireLegendCtrl);
+    } else {
+      map.removeControl(fireLegendCtrl);
+    }
+  };
+
+  //================================================================================
+  //hurricane_layer: add event listener for change of visibility
+  hurricane_layer.addEventListener('change:visible', hurrChange)
+
+  //when hurricane_layer.visible change check if its legend should be displayed 
+  function hurrChange() {
+    if (hurricane_layer.getVisible() == true) {
+      map.addControl(hurrLegendCtrl);
+    } else {
+      map.removeControl(hurrLegendCtrl);
+    }
+  };
+
+  //================================================================================
+  //tornado_layer: add event listener for change of visibility
+  tornado_layer.addEventListener('change:visible', torChange)
+
+  //when tornado_layer.visible change check if its legend should be displayed 
+  function torChange() {
+    if (tornado_layer.getVisible() == true) {
+      map.addControl(torLegendCtrl);
+    } else {
+      map.removeControl(torLegendCtrl);
+    }
+  };
+
+}
