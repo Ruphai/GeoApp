@@ -255,7 +255,7 @@ function init() {
         'Storm': { title: 'Severe Storm' },
         'Flood': { title: 'Severe Flood' },
         'Snow': { title: 'Severe Snow' },
-        'Bological': { title: 'Biological Hazards' },
+        'Biological': { title: 'Biological Hazards' },
 
       }
     }
