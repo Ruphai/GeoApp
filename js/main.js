@@ -191,7 +191,7 @@ function init() {
           combine: false,
           layers: [
             us_shape,
-            //flood_layer,
+            flood_layer,
             biological_layer,
             snow_layer,
             storm_layer,
@@ -432,7 +432,8 @@ function init() {
   })
 
 
-
+  var disasterLayers = [total_disaster_layer,flood_layer,biological_layer,snow_layer,storm_layer,fire_layer,hurricane_layer,tornado_layer]
+ 
   //add the legends according to the status of layer visibility
 
   map.addControl(totalDistLegendCtrl);
@@ -448,6 +449,13 @@ function init() {
     if (total_disaster_layer.getVisible() == true) {
       //totalDisasterLegend.style.display = "block";
       map.addControl(totalDistLegendCtrl);
+      //remove disaster layers overlapping 
+      for(var i = 0;i<disasterLayers.length;i++){
+        if(disasterLayers[i]!=total_disaster_layer){
+          disasterLayers[i].setVisible(false);
+        }
+      }
+
     } else {
       //totalDisasterLegend.style.display = "none";
       map.removeControl(totalDistLegendCtrl);
@@ -462,6 +470,12 @@ function init() {
   function floodChange() {
     if (flood_layer.getVisible() == true) {
       map.addControl(floodLegendCtrl);
+      //remove disaster layers overlapping 
+      for(var i = 0;i<disasterLayers.length;i++){
+        if(disasterLayers[i]!=flood_layer){
+          disasterLayers[i].setVisible(false);
+        }
+      }
     } else {
       map.removeControl(floodLegendCtrl);
     }
@@ -475,6 +489,12 @@ function init() {
   function bioChange() {
     if (biological_layer.getVisible() == true) {
       map.addControl(bioLegendCtrl);
+      //remove disaster layers overlapping 
+      for(var i = 0;i<disasterLayers.length;i++){
+        if(disasterLayers[i]!=biological_layer){
+          disasterLayers[i].setVisible(false);
+        }
+      }
     } else {
       map.removeControl(bioLegendCtrl);
     }
@@ -488,6 +508,12 @@ function init() {
   function snowChange() {
     if (snow_layer.getVisible() == true) {
       map.addControl(snowLegendCtrl);
+      //remove disaster layers overlapping 
+      for(var i = 0;i<disasterLayers.length;i++){
+        if(disasterLayers[i]!=snow_layer){
+          disasterLayers[i].setVisible(false);
+        }
+      }
     } else {
       map.removeControl(snowLegendCtrl);
     }
@@ -501,6 +527,12 @@ function init() {
   function stormChange() {
     if (storm_layer.getVisible() == true) {
       map.addControl(stormLegendCtrl);
+      //remove disaster layers overlapping 
+      for(var i = 0;i<disasterLayers.length;i++){
+        if(disasterLayers[i]!=storm_layer){
+          disasterLayers[i].setVisible(false);
+        }
+      }
     } else {
       map.removeControl(stormLegendCtrl);
     }
@@ -514,6 +546,12 @@ function init() {
   function fireChange() {
     if (fire_layer.getVisible() == true) {
       map.addControl(fireLegendCtrl);
+      //remove disaster layers overlapping 
+      for(var i = 0;i<disasterLayers.length;i++){
+        if(disasterLayers[i]!=fire_layer){
+          disasterLayers[i].setVisible(false);
+        }
+      }
     } else {
       map.removeControl(fireLegendCtrl);
     }
@@ -527,6 +565,12 @@ function init() {
   function hurrChange() {
     if (hurricane_layer.getVisible() == true) {
       map.addControl(hurrLegendCtrl);
+      //remove disaster layers overlapping 
+      for(var i = 0;i<disasterLayers.length;i++){
+        if(disasterLayers[i]!=hurricane_layer){
+          disasterLayers[i].setVisible(false);
+        }
+      }
     } else {
       map.removeControl(hurrLegendCtrl);
     }
@@ -540,6 +584,12 @@ function init() {
   function torChange() {
     if (tornado_layer.getVisible() == true) {
       map.addControl(torLegendCtrl);
+      //remove disaster layers overlapping 
+      for(var i = 0;i<disasterLayers.length;i++){
+        if(disasterLayers[i]!=tornado_layer){
+          disasterLayers[i].setVisible(false);
+        }
+      }
     } else {
       map.removeControl(torLegendCtrl);
     }
