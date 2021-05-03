@@ -70,3 +70,19 @@ header {
     bottom: 200px;
 
 }
+
+.button{
+    position: absolute;
+    background-color: #008CBA;
+    border: 0.5px solid white;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 2px 1px;
+    cursor: pointer;
+    left: 8px;
+    top: 170px;
+}
