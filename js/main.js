@@ -9,7 +9,7 @@ function init() {
 
   // MAP LAYERS:: BING LAYERS
   //=========================
-  let styles = [
+  let BaseLayerStyles = [
     'RoadOnDemand',
     'Aerial',
     'AerialWithLabelsOnDemand'
@@ -24,7 +24,7 @@ function init() {
   let baseLayers = [];
   let i;
 
-  for (i = 0; i < styles.length; i++) {
+  for (i = 0; i < BaseLayerStyles.length; i++) {
     baseLayers.push(
       new ol.layer.Tile({
         title: bingLabelNames[i],
@@ -33,7 +33,7 @@ function init() {
         preload: Infinity,
         source: new ol.source.BingMaps({
           key: 'ApTJzdkyN1DdFKkRAE6QIDtzihNaf6IWJsT-nQ_2eMoO4PN__0Tzhl2-WgJtXFSp',
-          imagerySet: styles[i],
+          imagerySet: BaseLayerStyles[i],
         }),
       })
     );
@@ -143,9 +143,8 @@ function init() {
           color: [255, 255, 255],
         })
       });
-    }
+    } 
 
-    // else if ...
     else {
       return new ol.style.Style({
         fill: new ol.style.Fill({
@@ -157,12 +156,8 @@ function init() {
         })
       });
     }
-  };
-  //revise this example: https://openlayers.org/en/master/examples/vector-layer.html
-  //https://www.howtobuildsoftware.com/index.php/how-do/lpd/gis-geojson-openlayers-3-openlayers-35-and-geojson
-  //https://opensourceconnections.com/blog/2015/07/08/visualizing-your-data-with-openlayers/
+  }; //Total Disaster Layer Style
 
-  // Total Disaster Layer
   let total_disaster_layer = new ol.layer.Vector({
     source: new ol.source.Vector({
       format: new ol.format.GeoJSON(),
@@ -173,11 +168,10 @@ function init() {
     },
     visible: true,
     title: "Disaster Layer"
-  });
+  }); // Total Disaster Layer
 
 
   //FLOOD LAYER
-  //https://www.canva.com/colors/color-wheel
   FloodStyle = function (feature, resolution) {
     if (feature.get('Flood') < 8) {
       return new ol.style.Style({
@@ -749,7 +743,7 @@ function init() {
   });
   map.addInteraction(select);
 
-  // Select control
+  // POP UP
   var popup = new ol.Overlay.PopupFeature({
     popupClass: 'default anim',
     select: select,
