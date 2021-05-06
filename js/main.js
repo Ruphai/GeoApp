@@ -516,7 +516,16 @@ function init() {
       map.removeControl(torLegendCtrl);
     }
   };
-
-
-
 }
+
+var disasterLayers = new ol.layer.Vector({
+  source: new ol.source.Vector({
+      format: new ol.format.GeoJSON(),
+      url: 'https://raw.githubusercontent.com/Ruphai/GeoApp/main/data/DisastersByStates_US.geojson', 
+  }),
+
+})
+
+var chart_layers = disasterLayers.features.properties.Total_Disa;
+
+console.log(chart_layers);
