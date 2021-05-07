@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="keywords" content="Web Mapping, OpenLayers, Geo-Application Development, Disaster Risks Mapping, Open Dashboard">
-    <meta name="author" content="Lydia Letaru, Rufai Balogun and Yuan Wang">
+    <meta name="author" content="Lydia, Rufai and Yuan">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disaster Monitoring Dashboard</title>
 
@@ -14,12 +14,9 @@
     <!-- Addition of OpenLayers API and Style sheets-->
     <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
     <script src="https://openlayers.org/en/v5.3.0/build/ol.js" type="text/javascript"></script>
-
-    <!--Reference to the local JavaScript files-->
     <script src="js/main.js"></script>
     <script src="js/layer_style_function.js"></script>
     <script src="js/legend_style_function.js"></script>
-    <script src="js/charts.js"></script>
 
 
     <!--Reference to the OL Layer Switcher Plugin -->
@@ -29,11 +26,15 @@
     <!--Reference to the ol-ext: Extensions for OpenLayers (ol) -->
     <link rel="stylesheet" href="http://viglino.github.io/ol-ext/dist/ol-ext.css" />
     <script type="text/javascript" src="http://viglino.github.io/ol-ext/dist/ol-ext.js"></script>
-   
+    <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
+  
     <!-- ol-ext maki and fontawesome defintions used in fontsymbol -->
     <script type="text/javascript" src="http://viglino.github.io/ol-ext/dist/extra/FontAwesomeDef.js"></script>
-   
+    <!-- ol-ext -->
+    <script type="text/javascript" src="http://viglino.github.io/ol-ext/dist/ol-ext.js"></script>
+
     <!--jQuery -->
+    <!-- Add jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     
 </head>
@@ -48,7 +49,6 @@
 
     <!--The Map Content Container:::kept as a placeholder-->
     <div id="map" class="map"></div>
-<<<<<<< HEAD
     <button class="button" onclick="window.location.href='https://github.com/YuanWANG2662/DisasterByStates_US.shp/raw/main/DisastersByStates_US.zip'">Download Shapefile</button>
     <!--<div id="overviewmap"></div>-->
    <!-- <select id="layer-select">
@@ -57,32 +57,6 @@
         <option value="RoadOnDemand">Road</option>
       </select>
       -->
-=======
-
-
-    <!--Map Chart Layer -->
-      <div class="options">
-        <h2>Options:</h2>
-        Chart type: <select id="graph" onchange="doAnimate();">
-          <option value="pie">pie</option>
-          <option value="pie3D">pie3D</option>
-          <option value="donut">donut</option>
-          <option value="bar">bar</option>
-        </select>
-        <br/>
-        Colors scheme: 
-        <select id="color" onchange="vector.changed()">
-          <option value="classic">Classic</option>
-          <option value="dark">Dark</option>
-          <option value="pale">Pale</option>
-          <option value="pastel">Pastel</option>
-          <option value="neon">Neon</option>
-          <option value="red,green,blue,magenta">Custom</option>
-        </select>
-        <br/>
-        <button onclick="doAnimate();">Animate!</button>
-      </div>
->>>>>>> f0dc313b3d7c97493fa9465ebb8762af6f7f9bae
 
     <!--The Footer Tab as a placeholder for control icons and buttons-->
     <footer id="main-footer">
