@@ -62,7 +62,7 @@ totalDisaterStyle = function (feature, resolution) {
     }
 }; //Total Disaster Layer Style
 
-var total_disaster_layer = new ol.layer.Vector({
+let total_disaster_layer = new ol.layer.Vector({
     source: new ol.source.Vector({
         format: new ol.format.GeoJSON(),
         url: 'https://raw.githubusercontent.com/Ruphai/GeoApp/main/data/DisastersByStates_US.geojson'
@@ -71,10 +71,7 @@ var total_disaster_layer = new ol.layer.Vector({
         return totalDisaterStyle(feature, resolution);
     },
     visible: true,
-    title: "Disaster Layer", 
-    // y ordering
-    //renderOrder: ol.ordering.yOrdering(),
-    //style: function(f) { return getFeatureStyle(f); }
+    title: "Disaster Layer"
 }); // Total Disaster Layer
 
 
@@ -137,7 +134,7 @@ FloodStyle = function (feature, resolution) {
     }
 };
 
-var flood_layer = new ol.layer.Vector({
+let flood_layer = new ol.layer.Vector({
     source: new ol.source.Vector({
         format: new ol.format.GeoJSON(),
         url: 'https://raw.githubusercontent.com/Ruphai/GeoApp/main/data/DisastersByStates_US.geojson'
@@ -209,7 +206,7 @@ BiologicalStyle = function (feature, resolution) {
     }
 };
 
-var biological_layer = new ol.layer.Vector({
+let biological_layer = new ol.layer.Vector({
     source: new ol.source.Vector({
         format: new ol.format.GeoJSON(),
         url: 'https://raw.githubusercontent.com/Ruphai/GeoApp/main/data/DisastersByStates_US.geojson'
@@ -283,7 +280,7 @@ snowStyle = function (feature, resolution) {
     }
 };
 
-var snow_layer = new ol.layer.Vector({
+let snow_layer = new ol.layer.Vector({
     source: new ol.source.Vector({
         format: new ol.format.GeoJSON(),
         url: 'https://raw.githubusercontent.com/Ruphai/GeoApp/main/data/DisastersByStates_US.geojson'
@@ -355,7 +352,7 @@ stormStyle = function (feature, resolution) {
     }
 };
 
-var storm_layer = new ol.layer.Vector({
+let storm_layer = new ol.layer.Vector({
     source: new ol.source.Vector({
         format: new ol.format.GeoJSON(),
         url: 'https://raw.githubusercontent.com/Ruphai/GeoApp/main/data/DisastersByStates_US.geojson'
@@ -428,7 +425,7 @@ FireStyle = function (feature, resolution) {
     }
 };
 
-var fire_layer = new ol.layer.Vector({
+let fire_layer = new ol.layer.Vector({
     source: new ol.source.Vector({
         format: new ol.format.GeoJSON(),
         url: 'https://raw.githubusercontent.com/Ruphai/GeoApp/main/data/DisastersByStates_US.geojson'
@@ -500,7 +497,7 @@ HurricaneStyle = function (feature, resolution) {
     }
 };
 
-var hurricane_layer = new ol.layer.Vector({
+let hurricane_layer = new ol.layer.Vector({
     source: new ol.source.Vector({
         format: new ol.format.GeoJSON(),
         url: 'https://raw.githubusercontent.com/Ruphai/GeoApp/main/data/DisastersByStates_US.geojson'
@@ -572,7 +569,7 @@ TornadoStyle = function (feature, resolution) {
     }
 };
 
-var tornado_layer = new ol.layer.Vector({
+let tornado_layer = new ol.layer.Vector({
     source: new ol.source.Vector({
         format: new ol.format.GeoJSON(),
         url: 'https://raw.githubusercontent.com/Ruphai/GeoApp/main/data/DisastersByStates_US.geojson'
