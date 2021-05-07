@@ -1,5 +1,4 @@
-//import external functions and classes
-//import totalDisaterStyle from '../utils/layerStyles';
+//import all from 'chart';
 
 // Call Function via the Onload::: DOM Event6
 window.onload = init;
@@ -96,82 +95,6 @@ function init() {
 
 
   // CLICK INTERACTION
-
-  //LAYER CHARTS
-  // // ol.style.Chart
-  // var animation = false;
-  // var styleCache = {};
-
-  // function getFeatureStyle (feature, sel) {
-  //   var k = $("#graph").val()+"-"+ $("#color").val()+"-"+(sel?"1-":"")+feature.get("data");
-  //   var style = styleCache[k];
-  //   if (!style) {
-  //     var radius = 15;
-  //     // area proportional to data size: s=PI*r^2
-  //     if ($("#graph").val()!="bar") {
-  //       radius = 8* Math.sqrt (feature.get("size") / Math.PI);
-  //     }
-  //     // Create chart style
-  //     var c = $("#color").val();
-  //     styleCache[k] = style = new ol.style.Style({
-  //       image: new ol.style.Chart({
-  //         type: $("#graph").val(), 
-  //         radius: (sel?1.2:1)*radius, 
-  //         offsetY: $("#graph").val()=='pie' ? 0 : (sel?-1.2:-1)*feature.get("radius"),
-  //         data: feature.get("data") || [10,30,20], 
-  //         colors: /,/.test(c) ? c.split(",") : c,
-  //         rotateWithView: true,
-  //         animation: animation,
-  //         stroke: new ol.style.Stroke({
-  //           color: $("#color").val()!="neon" ? "#fff":"#000",
-  //           width: 2
-  //         }),
-  //       })
-  //     });
-  //   }
-  //   style.getImage().setAnimation(animation);
-  //   return [style];
-  // }
-
-  // // Control Select 
-  // var select = new ol.interaction.Select({
-  //   style: function(f) { return getFeatureStyle(f, true); }
-  // });
-  // map.addInteraction(select);
-
-  // select.getFeatures().on(['add','remove'], function(e) {
-  //   if (e.type=="add") $("#select").html("Selection data: "+e.element.get("data").toString());
-  //   else $("#select").html("No selection");
-  // })
-
-  // // Animate function 
-  // var listenerKey;
-  // function doAnimate() {
-  //   if (listenerKey) return;
-  //   var start = new Date().getTime();
-  //   var duration = 1000;
-  //   animation = 0;
-  //   listenerKey = vector.on(['precompose', 'prerender'], function(event) {
-  //     var frameState = event.frameState;
-  //     var elapsed = frameState.time - start;
-  //     if (elapsed > duration) {
-  //       ol.Observable.unByKey(listenerKey);
-  //       listenerKey = null;
-  //       animation = false;
-  //     }	else {
-  //       animation = ol.easing.easeOut (elapsed / duration);
-  //       frameState.animate = true;
-  //     }
-  //     vector.changed();
-  //   });
-  //   // Force redraw
-  //   vector.changed();
-  //   //map.renderSync();
-  // }
-
-  // doAnimate();
-
-
 
   //--MAP DISPLAY AND VIEW--//
   //=============================
@@ -616,4 +539,20 @@ function init() {
     }
   };
 
+  //Charts -- Put the geoJSON objects into an array. 
+  let flood_layer1 = new ol.layer.Vector({
+    source: new ol.source.Vector({
+        format: new ol.format.GeoJSON(),
+        url: 'https://raw.githubusercontent.com/Ruphai/GeoApp/main/data/DisastersByStates_US.geojson'
+    }),
+    style: function(f) { return getFeatureStyle(f); }, 
+    //renderOrder: ol.ordering.yOrdering(),
+    visible: false,
+    title: "Disaster Charts"
+  });
+  map.addLayer(flood_layer1);
+  var select = new ol.interaction.Select({
+    style: function(f) { return getFeatureStyle(f, true); }
+  });
+  map.addInteraction(select);
 }
