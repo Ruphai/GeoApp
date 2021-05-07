@@ -262,6 +262,27 @@ function init() {
   });
   map.addOverlay(popup);
 
+  //=============================================================
+  // -- Search box --//
+
+  // Set the osm search control 
+  var search = new ol.control.SearchNominatim(
+    {	
+      reverse: true,
+      position: true	// Search, with priority to geo position
+    });
+  map.addControl(search);
+
+  // zoom to the address when click on the reference index
+  search.on('select', function (e) {
+    map.getView().animate({
+      center: e.coordinate,
+      zoom: Math.max(map.getView().getZoom(),6)
+      
+    });
+  });
+
+
 
   //--Legends of the Layers--//
 
